@@ -413,23 +413,18 @@ Xmem
 + $memory width=32 nlocations=1024 
 + file="projcheckoff.bin"
 
-// 30ns cycle time, assert RESET for first cycle. Your cycle time may vary
-//Vclk clk 0 pulse(3.3,0,14.99ns,.01ns,.01ns,14.99ns) 
-//Vclk clk 0 pulse(3.3,0,9.99ns,.01ns,.01ns,9.99ns)
+// 20ns cycle time, assert RESET for first cycle. Your cycle time may vary
 ***faster
-Vclk clk 0 pulse(3.3,0,7.99ns,.01ns,.01ns,7.99ns)
-//Vclk clk 0 pulse(3.3,0,24.99ns,.01ns,.01ns,24.99ns) 
-Vreset reset 0 pwl(0ns 3.3v, 30ns 3.3v, 30.1ns 0v) 
+//Vclk clk 0 pulse(3.3,0,7.99ns,.01ns,.01ns,7.99ns)
+Vclk clk 0 pulse(3.3,0,7.69ns,.01ns,.01ns,7.69ns)
+
+Vreset reset 0 pwl(0ns 3.3v, 15.4ns 3.3v, 15.5ns 0v) 
  
-// Run the simulation for 1205 cycles. Your design might require more or less 
+// Run the simulation for 1104 cycles. Your design might require more or less 
 // cycles depending on how it executes instructions. Run only as long as necessary 
 // to complete the benchmark since the ending simulation time is used to compute 
 // your circuits Benmark 
-//.tran 24100ns //20ns clk
-//.tran 21690ns	//18ns clk
-.tran 19280ns	//16ns
-//.tran 36150ns //30ns clk
-//.tran 60250ns //50ns clk
+.tran 17002ns	//15.4
 
 .plot clk
 .plot ia[31:0]
