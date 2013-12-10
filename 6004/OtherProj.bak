@@ -415,7 +415,9 @@ Xmem
 
 // 30ns cycle time, assert RESET for first cycle. Your cycle time may vary
 //Vclk clk 0 pulse(3.3,0,14.99ns,.01ns,.01ns,14.99ns) 
-Vclk clk 0 pulse(3.3,0,9.99ns,.01ns,.01ns,9.99ns)
+//Vclk clk 0 pulse(3.3,0,9.99ns,.01ns,.01ns,9.99ns)
+***faster
+Vclk clk 0 pulse(3.3,0,7.99ns,.01ns,.01ns,7.99ns)
 //Vclk clk 0 pulse(3.3,0,24.99ns,.01ns,.01ns,24.99ns) 
 Vreset reset 0 pwl(0ns 3.3v, 30ns 3.3v, 30.1ns 0v) 
  
@@ -423,9 +425,11 @@ Vreset reset 0 pwl(0ns 3.3v, 30ns 3.3v, 30.1ns 0v)
 // cycles depending on how it executes instructions. Run only as long as necessary 
 // to complete the benchmark since the ending simulation time is used to compute 
 // your circuits Benmark 
-.tran 24100ns 
-//.tran 36150ns
-//.tran 60250ns
+//.tran 24100ns //20ns clk
+.tran 21690ns	//18ns clk
+.tran 19280ns	//16ns
+//.tran 36150ns //30ns clk
+//.tran 60250ns //50ns clk
 
 .plot clk
 .plot ia[31:0]
