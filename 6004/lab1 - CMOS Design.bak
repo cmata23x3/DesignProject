@@ -1,0 +1,31 @@
+*CMOS logic-gate design
+
+.include "nominal.jsim"
+.include "lab1checkoff.jsim"
+
+* INVERTER: input is A, output is Z; taken from Question C
+.subckt inv a z
+MPD1 z a 0 0 NENH sw=16 sl=1
+MPU1 z a vdd vdd PENH sw=16 sl=1
+.ends
+
+*Main circuit: inputs are a, b & c; output is d
+.subckt main a b c z
+//MOSFET Pulldowns;
+MPD1 z a 1 0 NENH sw=8 sl=1 //  top nfet in series in PD
+MPD2 1 b 0 0 NENH sw=8 sl=1 //bottom nfet in series in PD
+MPD3 z c 0 0 NENH sw=8 sl=1
+
+//MOSFET Pullups
+MPU1 z a vdd vdd PENH sw=10 sl=1 
+MPU2 z b vdd vdd PENH sw=10 sl=1
+MPU3 z c vdd vdd PENH sw=10 sl=1
+.ends
+
+.subckt F A B C Z
+Xcircuit A B C mid main //name, inp, inp, inp, output, instance
+Xinv mid Z inv //name, inp, output, instance
+
+.ends
+
+

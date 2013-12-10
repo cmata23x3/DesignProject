@@ -1,0 +1,559 @@
+Timing analysis for /Users/christianmata/Desktop/6.004/6004/DesignProj at Wed Dec 04 01:32:27 EST 2013
+
+==================================================================
+
+Hold time violations for clk:
+
+  tCD from reset to xbeta.xpc.pcupdate31 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate31 [xbeta.xpc.xresetmux.x32mux#0.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#0.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate30 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate30 [xbeta.xpc.xresetmux.x32mux#1.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#1.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate29 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate29 [xbeta.xpc.xresetmux.x32mux#2.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#2.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate28 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate28 [xbeta.xpc.xresetmux.x32mux#3.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#3.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate27 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate27 [xbeta.xpc.xresetmux.x32mux#4.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#4.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate26 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate26 [xbeta.xpc.xresetmux.x32mux#5.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#5.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate25 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate25 [xbeta.xpc.xresetmux.x32mux#6.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#6.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate24 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate24 [xbeta.xpc.xresetmux.x32mux#7.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#7.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate23 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate23 [xbeta.xpc.xresetmux.x32mux#8.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#8.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate22 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate22 [xbeta.xpc.xresetmux.x32mux#9.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#9.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate21 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate21 [xbeta.xpc.xresetmux.x32mux#10.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#10.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate20 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate20 [xbeta.xpc.xresetmux.x32mux#11.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#11.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate19 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate19 [xbeta.xpc.xresetmux.x32mux#12.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#12.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate18 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate18 [xbeta.xpc.xresetmux.x32mux#13.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#13.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate17 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate17 [xbeta.xpc.xresetmux.x32mux#14.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#14.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate16 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate16 [xbeta.xpc.xresetmux.x32mux#15.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#15.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate15 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate15 [xbeta.xpc.xresetmux.x32mux#16.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#16.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate14 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate14 [xbeta.xpc.xresetmux.x32mux#17.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#17.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate13 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate13 [xbeta.xpc.xresetmux.x32mux#18.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#18.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate12 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate12 [xbeta.xpc.xresetmux.x32mux#19.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#19.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate11 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate11 [xbeta.xpc.xresetmux.x32mux#20.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate10 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate10 [xbeta.xpc.xresetmux.x32mux#21.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#21.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate9 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate9 [xbeta.xpc.xresetmux.x32mux#22.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#22.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate8 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate8 [xbeta.xpc.xresetmux.x32mux#23.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#23.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate7 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate7 [xbeta.xpc.xresetmux.x32mux#24.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#24.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate6 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate6 [xbeta.xpc.xresetmux.x32mux#25.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#25.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate5 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate5 [xbeta.xpc.xresetmux.x32mux#26.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#26.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate4 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate4 [xbeta.xpc.xresetmux.x32mux#27.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#27.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate3 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate3 [xbeta.xpc.xresetmux.x32mux#28.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#28.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate2 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate2 [xbeta.xpc.xresetmux.x32mux#29.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#29.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate1 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate1 [xbeta.xpc.xresetmux.x32mux#30.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#30.xdreg]
+
+  tCD from reset to xbeta.xpc.pcupdate0 violates hold time by -0.005ns:
+
+    + 0.000ns = 0.000ns reset [vreset]
+    + 0.020ns = 0.020ns xbeta.xpc.pcupdate0 [xbeta.xpc.xresetmux.x32mux#31.xmux2]
+    - 0.025ns = -0.005ns clk [xbeta.xpc.xpcdreg.x32dreg#31.xdreg]
+
+==================================================================
+
+Minimum cycle time for clk is 29.000ns:
+
+  tPD from clk to xbeta.wdselout0 (29.000ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.005ns = 4.277ns id31%0 [xmem]
+    + 2.005ns = 6.282ns xbeta.xwasel%0 [xbeta.xctl.xctl]
+    + 0.233ns = 6.514ns xbeta.wasel [xbeta.xdeltawasel.xmux2]
+    + 0.165ns = 6.679ns xbeta.wa4 [xbeta.xwaselmux#0.xmux2]
+    + 0.152ns = 6.831ns xbeta.xregfl.ra2mux4 [xbeta.xregfl.xmuxra2.x5mux#0.xmux2]
+    + 2.005ns = 8.836ns xbeta.xregfl.bdata0%0 [xbeta.xregfl.xregfile]
+    + 0.165ns = 9.001ns mwd0 [xbeta.xregfl.xmuxb.x32mux#31.xmux2]
+    + 1.902ns = 10.903ns xbeta.bselout0 [xbeta.xbselmux#31.xmux2]
+    + 0.183ns = 11.086ns xbeta.xalu.xarith.xmult.lineouta0 [xbeta.xalu.xarith.xmult.xpartial0#31.xand2]
+    + 0.167ns = 11.253ns xbeta.xalu.xarith.xmult.xsumup0.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup0.xfirst.xxor1.xxor2]
+    + 0.203ns = 11.456ns xbeta.xalu.xarith.xmult.suma0 [xbeta.xalu.xarith.xmult.xsumup0.xfirst.xxor2.xxor2]
+    + 0.167ns = 11.623ns xbeta.xalu.xarith.xmult.xsumup1.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup1.xfirst.xxor1.xxor2]
+    + 0.203ns = 11.826ns xbeta.xalu.xarith.xmult.sumb0 [xbeta.xalu.xarith.xmult.xsumup1.xfirst.xxor2.xxor2]
+    + 0.167ns = 11.993ns xbeta.xalu.xarith.xmult.xsumup2.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup2.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.196ns xbeta.xalu.xarith.xmult.sumc0 [xbeta.xalu.xarith.xmult.xsumup2.xfirst.xxor2.xxor2]
+    + 0.167ns = 12.363ns xbeta.xalu.xarith.xmult.xsumup3.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup3.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.566ns xbeta.xalu.xarith.xmult.sumd0 [xbeta.xalu.xarith.xmult.xsumup3.xfirst.xxor2.xxor2]
+    + 0.167ns = 12.733ns xbeta.xalu.xarith.xmult.xsumup4.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup4.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.936ns xbeta.xalu.xarith.xmult.sume0 [xbeta.xalu.xarith.xmult.xsumup4.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.103ns xbeta.xalu.xarith.xmult.xsumup5.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup5.xfirst.xxor1.xxor2]
+    + 0.203ns = 13.306ns xbeta.xalu.xarith.xmult.sumf0 [xbeta.xalu.xarith.xmult.xsumup5.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.473ns xbeta.xalu.xarith.xmult.xsumup6.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup6.xfirst.xxor1.xxor2]
+    + 0.203ns = 13.676ns xbeta.xalu.xarith.xmult.sumg0 [xbeta.xalu.xarith.xmult.xsumup6.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.843ns xbeta.xalu.xarith.xmult.xsumup7.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup7.xfirst.xxor1.xxor2]
+    + 0.203ns = 14.046ns xbeta.xalu.xarith.xmult.sumh0 [xbeta.xalu.xarith.xmult.xsumup7.xfirst.xxor2.xxor2]
+    + 0.053ns = 14.098ns xbeta.xalu.xarith.xmult.xsumup8.xfirst.2 [xbeta.xalu.xarith.xmult.xsumup8.xfirst.xnand21.xnand2]
+    + 0.109ns = 14.207ns xbeta.xalu.xarith.xmult.xsumup8.c_over0 [xbeta.xalu.xarith.xmult.xsumup8.xfirst.xnand31.xnand3]
+    + 0.053ns = 14.260ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.xnand22.xnand2]
+    + 0.109ns = 14.368ns xbeta.xalu.xarith.xmult.xsumup8.c_over1 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.xnand31.xnand3]
+    + 0.053ns = 14.421ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.xnand22.xnand2]
+    + 0.109ns = 14.530ns xbeta.xalu.xarith.xmult.xsumup8.c_over2 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.xnand31.xnand3]
+    + 0.053ns = 14.582ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.xnand22.xnand2]
+    + 0.109ns = 14.691ns xbeta.xalu.xarith.xmult.xsumup8.c_over3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.xnand31.xnand3]
+    + 0.053ns = 14.743ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.xnand22.xnand2]
+    + 0.109ns = 14.852ns xbeta.xalu.xarith.xmult.xsumup8.c_over4 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.xnand31.xnand3]
+    + 0.053ns = 14.905ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.xnand22.xnand2]
+    + 0.109ns = 15.014ns xbeta.xalu.xarith.xmult.xsumup8.c_over5 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.xnand31.xnand3]
+    + 0.053ns = 15.066ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.xnand22.xnand2]
+    + 0.109ns = 15.175ns xbeta.xalu.xarith.xmult.xsumup8.c_over6 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.xnand31.xnand3]
+    + 0.053ns = 15.227ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.xnand22.xnand2]
+    + 0.109ns = 15.336ns xbeta.xalu.xarith.xmult.xsumup8.c_over7 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.xnand31.xnand3]
+    + 0.053ns = 15.389ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.xnand22.xnand2]
+    + 0.109ns = 15.497ns xbeta.xalu.xarith.xmult.xsumup8.c_over8 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.xnand31.xnand3]
+    + 0.053ns = 15.550ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.xnand22.xnand2]
+    + 0.109ns = 15.659ns xbeta.xalu.xarith.xmult.xsumup8.c_over9 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.xnand31.xnand3]
+    + 0.053ns = 15.711ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.xnand22.xnand2]
+    + 0.109ns = 15.820ns xbeta.xalu.xarith.xmult.xsumup8.c_over10 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.xnand31.xnand3]
+    + 0.203ns = 16.023ns xbeta.xalu.xarith.xmult.sumi11 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.190ns xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 16.393ns xbeta.xalu.xarith.xmult.sumj11 [xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.560ns xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 16.763ns xbeta.xalu.xarith.xmult.sumk11 [xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.930ns xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.133ns xbeta.xalu.xarith.xmult.suml11 [xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 17.300ns xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.503ns xbeta.xalu.xarith.xmult.summ11 [xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 17.670ns xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.873ns xbeta.xalu.xarith.xmult.sumn11 [xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.040ns xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.243ns xbeta.xalu.xarith.xmult.sumo11 [xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.410ns xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.613ns xbeta.xalu.xarith.xmult.sump11 [xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.780ns xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.983ns xbeta.xalu.xarith.xmult.sumq11 [xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.150ns xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 19.353ns xbeta.xalu.xarith.xmult.sumr11 [xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.520ns xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 19.723ns xbeta.xalu.xarith.xmult.sums11 [xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.890ns xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.093ns xbeta.xalu.xarith.xmult.sumt11 [xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 20.260ns xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.463ns xbeta.xalu.xarith.xmult.sumu11 [xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 20.630ns xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.833ns xbeta.xalu.xarith.xmult.sumv11 [xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.000ns xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.203ns xbeta.xalu.xarith.xmult.sumw11 [xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.370ns xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.573ns xbeta.xalu.xarith.xmult.sumx11 [xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.740ns xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.943ns xbeta.xalu.xarith.xmult.sumy11 [xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.110ns xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 22.313ns xbeta.xalu.xarith.xmult.sumz11 [xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.480ns xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 22.683ns xbeta.xalu.xarith.xmult.sumaa11 [xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.850ns xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.053ns xbeta.xalu.xarith.xmult.sumbb11 [xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.220ns xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.423ns xbeta.xalu.xarith.xmult.sumcc11 [xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.590ns xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.793ns xbeta.xalu.xarith.xmult.sumdd11 [xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.960ns xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.xxor1.xxor2]
+    + 0.163ns = 24.122ns xbeta.xalu.xarith.mulout11 [xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.xxor2.xxor2]
+    + 0.143ns = 24.265ns xbeta.xalu.arithout11 [xbeta.xalu.xarith.xsout#20.xmux2]
+    + 0.143ns = 24.407ns xbeta.xalu.arithshift11 [xbeta.xalu.xmux3#20.xmux2]
+    + 0.143ns = 24.550ns xbeta.xalu.nonbool11 [xbeta.xalu.xmux2#20.xmux2]
+    + 0.192ns = 24.742ns ma11 [xbeta.xalu.xmux1#20.xmux2]
+    + 4.006ns = 28.748ns mrd0%0 [xmem]
+    + 0.213ns = 28.960ns xbeta.wdselout0 [xbeta.xwdselmux#31.xmux4]
+    + 0.040ns = 29.000ns clk [xbeta.xregfl.xregfile]
+
+  tPD from clk to ma11 (24.782ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.005ns = 4.277ns id31%0 [xmem]
+    + 2.005ns = 6.282ns xbeta.xwasel%0 [xbeta.xctl.xctl]
+    + 0.233ns = 6.514ns xbeta.wasel [xbeta.xdeltawasel.xmux2]
+    + 0.165ns = 6.679ns xbeta.wa4 [xbeta.xwaselmux#0.xmux2]
+    + 0.152ns = 6.831ns xbeta.xregfl.ra2mux4 [xbeta.xregfl.xmuxra2.x5mux#0.xmux2]
+    + 2.005ns = 8.836ns xbeta.xregfl.bdata0%0 [xbeta.xregfl.xregfile]
+    + 0.165ns = 9.001ns mwd0 [xbeta.xregfl.xmuxb.x32mux#31.xmux2]
+    + 1.902ns = 10.903ns xbeta.bselout0 [xbeta.xbselmux#31.xmux2]
+    + 0.183ns = 11.086ns xbeta.xalu.xarith.xmult.lineouta0 [xbeta.xalu.xarith.xmult.xpartial0#31.xand2]
+    + 0.167ns = 11.253ns xbeta.xalu.xarith.xmult.xsumup0.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup0.xfirst.xxor1.xxor2]
+    + 0.203ns = 11.456ns xbeta.xalu.xarith.xmult.suma0 [xbeta.xalu.xarith.xmult.xsumup0.xfirst.xxor2.xxor2]
+    + 0.167ns = 11.623ns xbeta.xalu.xarith.xmult.xsumup1.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup1.xfirst.xxor1.xxor2]
+    + 0.203ns = 11.826ns xbeta.xalu.xarith.xmult.sumb0 [xbeta.xalu.xarith.xmult.xsumup1.xfirst.xxor2.xxor2]
+    + 0.167ns = 11.993ns xbeta.xalu.xarith.xmult.xsumup2.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup2.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.196ns xbeta.xalu.xarith.xmult.sumc0 [xbeta.xalu.xarith.xmult.xsumup2.xfirst.xxor2.xxor2]
+    + 0.167ns = 12.363ns xbeta.xalu.xarith.xmult.xsumup3.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup3.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.566ns xbeta.xalu.xarith.xmult.sumd0 [xbeta.xalu.xarith.xmult.xsumup3.xfirst.xxor2.xxor2]
+    + 0.167ns = 12.733ns xbeta.xalu.xarith.xmult.xsumup4.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup4.xfirst.xxor1.xxor2]
+    + 0.203ns = 12.936ns xbeta.xalu.xarith.xmult.sume0 [xbeta.xalu.xarith.xmult.xsumup4.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.103ns xbeta.xalu.xarith.xmult.xsumup5.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup5.xfirst.xxor1.xxor2]
+    + 0.203ns = 13.306ns xbeta.xalu.xarith.xmult.sumf0 [xbeta.xalu.xarith.xmult.xsumup5.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.473ns xbeta.xalu.xarith.xmult.xsumup6.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup6.xfirst.xxor1.xxor2]
+    + 0.203ns = 13.676ns xbeta.xalu.xarith.xmult.sumg0 [xbeta.xalu.xarith.xmult.xsumup6.xfirst.xxor2.xxor2]
+    + 0.167ns = 13.843ns xbeta.xalu.xarith.xmult.xsumup7.xfirst.1 [xbeta.xalu.xarith.xmult.xsumup7.xfirst.xxor1.xxor2]
+    + 0.203ns = 14.046ns xbeta.xalu.xarith.xmult.sumh0 [xbeta.xalu.xarith.xmult.xsumup7.xfirst.xxor2.xxor2]
+    + 0.053ns = 14.098ns xbeta.xalu.xarith.xmult.xsumup8.xfirst.2 [xbeta.xalu.xarith.xmult.xsumup8.xfirst.xnand21.xnand2]
+    + 0.109ns = 14.207ns xbeta.xalu.xarith.xmult.xsumup8.c_over0 [xbeta.xalu.xarith.xmult.xsumup8.xfirst.xnand31.xnand3]
+    + 0.053ns = 14.260ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.xnand22.xnand2]
+    + 0.109ns = 14.368ns xbeta.xalu.xarith.xmult.xsumup8.c_over1 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#29.xnand31.xnand3]
+    + 0.053ns = 14.421ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.xnand22.xnand2]
+    + 0.109ns = 14.530ns xbeta.xalu.xarith.xmult.xsumup8.c_over2 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#28.xnand31.xnand3]
+    + 0.053ns = 14.582ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.xnand22.xnand2]
+    + 0.109ns = 14.691ns xbeta.xalu.xarith.xmult.xsumup8.c_over3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#27.xnand31.xnand3]
+    + 0.053ns = 14.743ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.xnand22.xnand2]
+    + 0.109ns = 14.852ns xbeta.xalu.xarith.xmult.xsumup8.c_over4 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#26.xnand31.xnand3]
+    + 0.053ns = 14.905ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.xnand22.xnand2]
+    + 0.109ns = 15.014ns xbeta.xalu.xarith.xmult.xsumup8.c_over5 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#25.xnand31.xnand3]
+    + 0.053ns = 15.066ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.xnand22.xnand2]
+    + 0.109ns = 15.175ns xbeta.xalu.xarith.xmult.xsumup8.c_over6 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#24.xnand31.xnand3]
+    + 0.053ns = 15.227ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.xnand22.xnand2]
+    + 0.109ns = 15.336ns xbeta.xalu.xarith.xmult.xsumup8.c_over7 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#23.xnand31.xnand3]
+    + 0.053ns = 15.389ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.xnand22.xnand2]
+    + 0.109ns = 15.497ns xbeta.xalu.xarith.xmult.xsumup8.c_over8 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#22.xnand31.xnand3]
+    + 0.053ns = 15.550ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.xnand22.xnand2]
+    + 0.109ns = 15.659ns xbeta.xalu.xarith.xmult.xsumup8.c_over9 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#21.xnand31.xnand3]
+    + 0.053ns = 15.711ns xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.3 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.xnand22.xnand2]
+    + 0.109ns = 15.820ns xbeta.xalu.xarith.xmult.xsumup8.c_over10 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#20.xnand31.xnand3]
+    + 0.203ns = 16.023ns xbeta.xalu.xarith.xmult.sumi11 [xbeta.xalu.xarith.xmult.xsumup8.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.190ns xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 16.393ns xbeta.xalu.xarith.xmult.sumj11 [xbeta.xalu.xarith.xmult.xsumup9.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.560ns xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 16.763ns xbeta.xalu.xarith.xmult.sumk11 [xbeta.xalu.xarith.xmult.xsumup10.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 16.930ns xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.133ns xbeta.xalu.xarith.xmult.suml11 [xbeta.xalu.xarith.xmult.xsumup11.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 17.300ns xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.503ns xbeta.xalu.xarith.xmult.summ11 [xbeta.xalu.xarith.xmult.xsumup12.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 17.670ns xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 17.873ns xbeta.xalu.xarith.xmult.sumn11 [xbeta.xalu.xarith.xmult.xsumup13.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.040ns xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.243ns xbeta.xalu.xarith.xmult.sumo11 [xbeta.xalu.xarith.xmult.xsumup14.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.410ns xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.613ns xbeta.xalu.xarith.xmult.sump11 [xbeta.xalu.xarith.xmult.xsumup15.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 18.780ns xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 18.983ns xbeta.xalu.xarith.xmult.sumq11 [xbeta.xalu.xarith.xmult.xsumup16.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.150ns xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 19.353ns xbeta.xalu.xarith.xmult.sumr11 [xbeta.xalu.xarith.xmult.xsumup17.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.520ns xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 19.723ns xbeta.xalu.xarith.xmult.sums11 [xbeta.xalu.xarith.xmult.xsumup18.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 19.890ns xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.093ns xbeta.xalu.xarith.xmult.sumt11 [xbeta.xalu.xarith.xmult.xsumup19.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 20.260ns xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.463ns xbeta.xalu.xarith.xmult.sumu11 [xbeta.xalu.xarith.xmult.xsumup20.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 20.630ns xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 20.833ns xbeta.xalu.xarith.xmult.sumv11 [xbeta.xalu.xarith.xmult.xsumup21.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.000ns xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.203ns xbeta.xalu.xarith.xmult.sumw11 [xbeta.xalu.xarith.xmult.xsumup22.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.370ns xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.573ns xbeta.xalu.xarith.xmult.sumx11 [xbeta.xalu.xarith.xmult.xsumup23.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 21.740ns xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 21.943ns xbeta.xalu.xarith.xmult.sumy11 [xbeta.xalu.xarith.xmult.xsumup24.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.110ns xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 22.313ns xbeta.xalu.xarith.xmult.sumz11 [xbeta.xalu.xarith.xmult.xsumup25.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.480ns xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 22.683ns xbeta.xalu.xarith.xmult.sumaa11 [xbeta.xalu.xarith.xmult.xsumup26.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 22.850ns xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.053ns xbeta.xalu.xarith.xmult.sumbb11 [xbeta.xalu.xarith.xmult.xsumup27.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.220ns xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.423ns xbeta.xalu.xarith.xmult.sumcc11 [xbeta.xalu.xarith.xmult.xsumup28.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.590ns xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.xxor1.xxor2]
+    + 0.203ns = 23.793ns xbeta.xalu.xarith.xmult.sumdd11 [xbeta.xalu.xarith.xmult.xsumup29.xmiddle#19.xxor2.xxor2]
+    + 0.167ns = 23.960ns xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.1 [xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.xxor1.xxor2]
+    + 0.163ns = 24.122ns xbeta.xalu.xarith.mulout11 [xbeta.xalu.xarith.xmult.xsumup30.xmiddle#19.xxor2.xxor2]
+    + 0.143ns = 24.265ns xbeta.xalu.arithout11 [xbeta.xalu.xarith.xsout#20.xmux2]
+    + 0.143ns = 24.407ns xbeta.xalu.arithshift11 [xbeta.xalu.xmux3#20.xmux2]
+    + 0.143ns = 24.550ns xbeta.xalu.nonbool11 [xbeta.xalu.xmux2#20.xmux2]
+    + 0.192ns = 24.742ns ma11 [xbeta.xalu.xmux1#20.xmux2]
+    + 0.040ns = 24.782ns clk [xmem]
+
+  tPD from clk to xbeta.xpc.pcupdate31 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp31 [xbeta.xpc.xpcselmux.xfirstmux#0.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next31 [xbeta.xpc.xpcselmux.xfifthmux#0.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate31 [xbeta.xpc.xresetmux.x32mux#0.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#0.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate30 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp30 [xbeta.xpc.xpcselmux.xfirstmux#1.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next30 [xbeta.xpc.xpcselmux.xfifthmux#1.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate30 [xbeta.xpc.xresetmux.x32mux#1.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#1.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate29 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp29 [xbeta.xpc.xpcselmux.xfirstmux#2.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next29 [xbeta.xpc.xpcselmux.xfifthmux#2.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate29 [xbeta.xpc.xresetmux.x32mux#2.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#2.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate28 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp28 [xbeta.xpc.xpcselmux.xfirstmux#3.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next28 [xbeta.xpc.xpcselmux.xfifthmux#3.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate28 [xbeta.xpc.xresetmux.x32mux#3.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#3.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate27 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp27 [xbeta.xpc.xpcselmux.xfirstmux#4.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next27 [xbeta.xpc.xpcselmux.xfifthmux#4.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate27 [xbeta.xpc.xresetmux.x32mux#4.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#4.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate26 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp26 [xbeta.xpc.xpcselmux.xfirstmux#5.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next26 [xbeta.xpc.xpcselmux.xfifthmux#5.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate26 [xbeta.xpc.xresetmux.x32mux#5.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#5.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate25 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp25 [xbeta.xpc.xpcselmux.xfirstmux#6.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next25 [xbeta.xpc.xpcselmux.xfifthmux#6.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate25 [xbeta.xpc.xresetmux.x32mux#6.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#6.xdreg]
+
+  tPD from clk to xbeta.xpc.pcupdate24 (9.818ns):
+
+    + 0.000ns = 0.000ns clk [vclk]
+    + 0.272ns = 0.272ns ia11 [xbeta.xpc.xpcdreg.x32dreg#20.xdreg]
+    + 4.007ns = 4.279ns id20%0 [xmem]
+    + 2.005ns = 6.284ns xbeta.xregfl.adata3%0 [xbeta.xregfl.xregfile]
+    + 0.192ns = 6.476ns xbeta.radata3 [xbeta.xregfl.xmuxa.x32mux#28.xmux2]
+    + 0.139ns = 6.615ns xbeta.xznor.a [xbeta.xznor.xnor1.xnor4]
+    + 0.169ns = 6.784ns xbeta.xznor.x [xbeta.xznor.xand1.xand4]
+    + 0.201ns = 6.985ns xbeta.z [xbeta.xznor.xand3.xand2]
+    + 0.026ns = 7.010ns xbeta.xctl.zinv [xbeta.xctl.xzinv.xinterter_2]
+    + 0.143ns = 7.153ns xbeta.xctl.branchzvalue [xbeta.xctl.xzmux.xmux2]
+    + 0.143ns = 7.295ns xbeta.xpcsel0 [xbeta.xctl.xmuxbr#2.xmux2]
+    + 1.848ns = 9.143ns xbeta.pcsel0 [xbeta.xdeltapcsel#2.xmux2]
+    + 0.213ns = 9.356ns xbeta.xpc.xpcselmux.temp24 [xbeta.xpc.xpcselmux.xfirstmux#7.xmux4]
+    + 0.143ns = 9.498ns xbeta.xpc.ia_next24 [xbeta.xpc.xpcselmux.xfifthmux#7.xmux2]
+    + 0.120ns = 9.618ns xbeta.xpc.pcupdate24 [xbeta.xpc.xresetmux.x32mux#7.xmux2]
+    + 0.200ns = 9.818ns clk [xbeta.xpc.xpcdreg.x32dreg#7.xdreg]

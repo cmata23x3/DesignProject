@@ -1,0 +1,56 @@
+// paren matcher
+
+checkoff "6004.mit.edu/currentsemester/6004assignment.doit" "Lab #4" -1305145314
+
+symbols ( ) 0 1
+
+tape test1 (
+result1 test1 0
+
+tape test2 )
+result1 test2 0
+
+tape test3 ( )
+result1 test3 1
+
+tape test4 ) (
+result1 test4 0
+
+tape test5 ( ( ( )
+result1 test5 0
+
+tape test6 ( ) ( ( ( ) ( ( ( ) ) ( ) ) )
+result1 test6 0
+
+tape test7 ( ( ( ( ( ( ) ( ( ) ) ) ) ) ) )
+result1 test7 1
+
+//tape test8 ( ) ) ) 
+//result1 test8 0
+
+// define additional symbols, your states and actions here
+
+states s1 s2
+symbols open done left right (left (right )left )right
+
+// action: state symbol state' write move
+
+// Initial Reading
+action s1 ( s2  open l
+action s1 ) *halt* 0 - // No chance to finish
+
+//End Condition 
+action s1 - *halt* 1 - //If in state 1 & read -; at halt & write 1; Case that complete match
+action s2 - *halt* 0 - //If in state 2 & read -; switch to halt & write 0; Case that not matching
+
+//Steps!!!!
+action s2 ) s1 right r
+action s2 ( s2 (left l 
+action s2 (right s2 (left l
+action s2 right s2 left l
+
+action s1 open s1 done l
+action s1 right s1 left l
+action s1 (left s1 (right r
+action s1 (right s2 open l
+action s1 left s1 right r

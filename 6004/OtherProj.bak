@@ -1,0 +1,515 @@
+// Design Project w/ beta implemention as described in lab handouts 
+ 
+.include "nominal.jsim" 
+.include "stdcell.jsim" 
+.include "projcheckoff.jsim" 
+
+//****Program Counter**** 
+
+//*32 bit two input mux; Xid s d0 d1 z mux2
+.subckt 32mux sel A[31:0] B[31:0] OUT[31:0]
+X32mux sel#32 A[31:0] B[31:0] OUT[31:0] mux2
+.ends
+
+//*PC Dreg; Xid d clk q dreg
+.subckt 32dreg clk in[31:0] out[31:0]
+X32dreg in[31:0] clk#32 out[31:0] dreg
+.ends
+
+//**pc circuit!**
+.subckt pc clk reset ia[31:0] iaRelBr[31:0] pcsel[2:0] illops[31:0] 
++ xadr[31:0] jt[31:0] sxtc[31:0] nextia[31:0]
+
+//Supervisor bit logic! Use AND gate; called super31
+Xsvisor ia[31] jt[31] super31 and2
+
+//Add 4 to ia/current pc to make nextia
+X4addr ia[31:0] 0#29 vdd 0#2 0 nextia[31:0] co 32adder
+
+//Add iaplus4 to sxtc --> iaRelBr (Relative branch)
+Xiabr nextia[31:0] sxtc[29:0] 0#2 0 iaRelBr[31:0] co1 32adder
+
+
+//Mux5; 3 select bits; 5 inputs; 1 output
+Xpcselmux pcsel[2:0] nextia[31:0] iaRelBr[31:0] super31 jt[30:2] 0#2 illops[31:0] xadr[31:0] ia_next[31:0]  mux5
+
+//reset; new pc value; 0x0; output *****could cause issues!!!!********
+Xresetmux reset ia_next[31:0] vdd 0#31 pcupdate[31:0] 32mux
+
+Xpcdreg clk pcupdate[31:0] ia[31:0] 32dreg
+
+.ends 
+
+//****Regfile****
+
+//5 bit two input mux; Xid s d0 d1 z mux2
+.subckt 5mux2 sel A[4:0] B[4:0] OUT[4:0]
+X5mux sel#5 A[4:0] B[4:0] OUT[4:0] mux2
+.ends
+
+.subckt r31ckr r[4:0] r31sel //use cascading to speed up; if 1 then reg31 else other reg
+Xand1 r[1:0] a and2
+Xand2 r[2] a b and2
+Xand3 r[3] b c and2
+Xand4 r[4] c r31sel and2
+.ends
+
+.subckt regfile clk werf ra2sel ra[4:0] rb[4:0] rc[4:0] wdata[31:0] radata[31:0] rbdata[31:0] 
+//RA2SEL mux
+Xmuxra2 ra2sel rb[4:0] rc[4:0] ra2mux[4:0] 5mux2
+
+//Register file 
+Xregfile 
+ + vdd 0 0 ra[4:0] adata[31:0] // A read port 
+ + vdd 0 0 ra2mux[4:0] bdata[31:0] // B read port 
+ + 0 clk werf rc[4:0] wdata[31:0] // write port 
+ + $memory width=32 nlocations=31 
+
+// check each input reg for reg31
+//checking inputA & input B
+Xregcka ra[4:0] regAck r31ckr
+Xregckb ra2mux[4:0] regBck r31ckr
+
+//use muxes to choose correct reg values
+XmuxA regAck adata[31:0] 0#32 radata[31:0] 32mux
+XmuxB regBck bdata[31:0] 0#32 rbdata[31:0] 32mux
+.ends 
+
+//****Control Logic****
+
+
+.subckt ctl reset id[31:26] ra2sel bsel alufn[4:0] wdsel[1:0] werf moe wr z pcsel[2:0] asel wasel
+
+Xctl vdd 0 0 id[31:26] // one read port 
+ + xpcsel[2:0] wasel asel ra2sel bsel alufn[4:0] wdsel[1:0] werf moe xwr 
+
+ + $memory width=17 nlocations=64 contents=( 
+ + 0b01110000000000100 // opcode=0b000000 
+ + 0b01110000000000100 // opcode=0b000001 
+ + 0b01110000000000100 // opcode = 0b000010 NOP
+ + 0b01110000000000100 // opcode = 0b000011 NOP
+ + 0b01110000000000100 // opcode = 0b000100 NOP
+ + 0b01110000000000100 // opcode = 0b000101 NOP
+ + 0b01110000000000100 // opcode = 0b000110 NOP
+ + 0b01110000000000100 // opcode = 0b000111 NOP
+ + 0b01110000000000100 // opcode = 0b001000 NOP
+ + 0b01110000000000100 // opcode = 0b001001 NOP
+ + 0b01110000000000100 // opcode = 0b001010 NOP
+ + 0b01110000000000100 // opcode = 0b001011 NOP
+ + 0b01110000000000100 // opcode = 0b001100 NOP
+ + 0b01110000000000100 // opcode = 0b001101 NOP
+ + 0b01110000000000100 // opcode = 0b001110 NOP
+ + 0b01110000000000100 // opcode = 0b001111 NOP
+ + 0b01110000000000100 // opcode = 0b010000 NOP
+ + 0b01110000000000100 // opcode = 0b010001 NOP
+ + 0b01110000000000100 // opcode = 0b010010 NOP
+ + 0b01110000000000100 // opcode = 0b010011 NOP
+ + 0b01110000000000100 // opcode = 0b010100 NOP
+ + 0b01110000000000100 // opcode = 0b010101 NOP
+ + 0b01110000000000100 // opcode = 0b010110 NOP
+ + 0b01110000000000100 // opcode = 0b010111 NOP
+ + 0b00000010000010110 // opcode = 0b011000 LD
+ + 0b00000110000000001 // opcode = 0b011001 ST
+ + 0b01110000000000100 // opcode = 0b011010 NOP
+ + 0b01000000000000100 // opcode = 0b011011 JMP 
+ + 0b10100000000000100 // opcode = 0b011100 BEQ 
+ + 0b11100000000000100 // opcode = 0b011101 BNE
+ + 0b01110000000000100 // opcode = 0b011110 NOP
+ + 0b00001001101010110 // opcode = 0b011111 LDR *****Chk
+ + 0b00000000000001100 // opcode = 0b100000 ADD
+ + 0b00000000000101100 // opcode = 0b100001 SUB
+ + 0b01110000000000100 // opcode = 0b100010 MUL (OPTIONAL)
+ + 0b01110000000000100 // opcode = 0b100011 DIV (OPTIONAL)
+ + 0b00000000010101100 // opcode = 0b100100 CMPEQ 
+ + 0b00000000011101100 // opcode = 0b100101 CMPLT
+ + 0b00000000110101100 // opcode = 0b100110 CMPLE
+ + 0b01110000000000100 // opcode = 0b100111 NOP
+ + 0b00000001100001100 // opcode = 0b101000 AND
+ + 0b00000001111001100	//opcode = 0b101001 OR
+ + 0b00000001011001100	//opcode = 0b101010 XOR
+ + 0b00000001100101100	//opcode = 0b101011 XNOR
+ + 0b00000000100001100	//opcode = 0b101100 SHL
+ + 0b00000000100101100	//opcode = 0b101101 SHR
+ + 0b00000000101101100	//opcode = 0b101110 SRA
+ + 0b01110000000000100	//opcode = 0b101111 NOP
+ + 0b00000010000001100	//opcode = 0b110000 ADDC
+ + 0b00000010000101100	//opcode = 0b110001 SUBC
+ + 0b01110000000000100	//opcode = 0b110010 MULC (optional)
+ + 0b01110000000000100	//opcode = 0b110011 DIVC (optional)
+ + 0b00000010010101100	//opcode = 0b110100 CMPEQC
+ + 0b00000010011101100	//opcode = 0b110101 CMPLTC
+ + 0b00000010110101100	//opcode = 0b110110 CMPLEC
+ + 0b01110000000000100	//opcode = 0b110111 NOP
+ + 0b00000011100001100	//opcode = 0b111000 ANDC
+ + 0b00000011111001100	//opcode = 0b111001 ORC
+ + 0b00000011011001100	//opcode = 0b111010 XORC
+ + 0b00000011100101100	//opcode = 0b111011 XNORC
+ + 0b00000010100001100	//opcode = 0b111100 SHLC
+ + 0b00000010100101100	//opcode = 0b111101 SHRC
+ + 0b00000010101101100	//opcode = 0b111110 SRAC
+ + 0b01110000000000100	//opcode = 0b111111 NOP
+ + ) 
+
+// Logic to force WR = 0 at reset
+Xinv reset notreset inverter
+Xand xwr notreset wr and2 //Changed xpcsel to pcsel*** 
+
+// Z logic for BNE, BEQ
+Xand2 xpcsel[2] xpcsel[0] branch and2 //could be taking either BNE or BEQ
+
+Xzinv z zinv inverter_2 //not z
+
+//use mux to allow PCSEL[1] bit to determine which z to use
+// if xpcsel[1] = 0; it's a BEQ; use the uninverted Z
+// if xpcsel[1] = 1; its  a BNE; use the ~Z
+Xzmux xpcsel[1] z zinv branchZvalue mux2 
+
+XmuxBR branch#3 xpcsel[2:0] 0 0 branchZvalue pcsel[2:0] mux2
+.ends 
+
+//****ALU****
+.subckt BOOL alufn[3:0] A[31:0] B[31:0] OUT[31:0]
+Xbool A[31:0] B[31:0] alufn0#32 alufn1#32 alufn2#32 alufn3#32 OUT[31:0] mux4
+.ends
+
+.subckt PLUS32 cin a[31:0] b[31:0] s[31:0]
+xbit0 a[31:0] b[31:0] C[30:0] cin s[31:0] C[31:0] FA 
+.ends
+
+.subckt ARITH alufn[1:0] A[31:0] B[31:0] OUT[31:0] z v n
+xxor B[31:0] alufn[0]#32 XB[31:0] xor2
+xadd alufn[0] A[31:0] XB[31:0] OUT[31:0] PLUS32
+Xz OUT[31:0] z outZ
+Xn OUT[31] n outN
+Xv OUT[31] A[31] XB[31] v outV
+.ends
+
+**** calculate Z
+.subckt outZ s[31:0] z
+xn0 s[31:0]  result[7:0] nor4
+xnand result[7:0] nextResult[1:0] nand4
+xn1 nextResult[1:0] z nor2
+.ends
+
+**** calculate N
+.subckt outN out[31] n
+xn2 out[31] n buffer
+.ends
+
+**** calculate V
+.subckt outV out[31] a[31] xb[31] v
+xinv0 out[31] s inverter
+xinv1 a[31] Anot inverter
+xinv2 xb[31] XBnot inverter
+xand0 a[31] xb[31] s va and3
+xand1 Anot XBnot out[31] vb and3
+xor0  va vb v or2
+.ends
+
+.subckt SHIFT alufn[1:0] A[31:0] B[31:0] OUT[31:0]
+**Decide
+Xshiftg[0] alufn[1] A[31] extbit and2
+Xshiftg[2] alufn[0]#32 A[31:0] A[0:31] AA[31:0] mux2
+**Left
+Xshiftg[3] B[4]#16 AA[31:16] AA[15:0] W[31:16] mux2
+Xshiftg[4] B[3]#24 W[31:8] W[23:0] X[31:8] mux2
+Xshiftg[5] B[2]#28 X[31:4] X[27:0] Y[31:4] mux2
+Xshiftg[6] B[1]#30 Y[31:2] Y[29:0] Z[31:2] mux2
+Xshiftg[7] B[0]#31 Z[31:1] Z[30:0] SL[31:1] mux2
+**Right
+Xshiftg[9] B[4]#16 AA[15:0] extbit#16 W[15:0] mux2
+Xshiftg[10] B[3]#8 W[7:0] extbit#8 X[7:0] mux2
+Xshiftg[11] B[2]#4 X[3:0] extbit#4 Y[3:0] mux2
+Xshiftg[12] B[1]#2 Y[1:0] extbit#2 Z[1:0] mux2
+Xshift[13] B[0] Z[0] extbit SL[0] mux2
+
+Xshiftg[8] alufn[0]#32 SL[31:0] SL[0:31] OUT[31:0] mux2
+.ends
+
+.subckt CMP alufn3 alufn1 Z V N OUT[31:0]
+xcon OUT[31:1] constant0 
+xxor N V ra xor2
+xor Z ra rb or2
+xcmp alufn3 alufn1 Z rb ra 0 OUT[0] mux4
+.ends
+
+.subckt help A[31:0] b shifteda[31:0] output[31:0]
+Xhelperg1 A[31:0] b#32 output[31:0] and2
+Xhelperg2 A[30:0] 0 shifteda[31:0] knex
+.ends
+
+.subckt knex a b
+.connect a b
+.ends
+
+.subckt mult32 A[31:0] B[31:0] mul[31:0]
+********* first multiply all of AI's with all of BI shifting by 1 each time
+
+Xmultig[0] A[31:0] B[0] A1_[31:0] S0_[31:0] help
+Xmultig[1] A1_[31:0] B[1] A2_[31:0] S1_[31:0] help
+Xmultig[2] A2_[31:0] B[2] A3_[31:0] S2_[31:0] help
+Xmultig[3] A3_[31:0] B[3] A4_[31:0] S3_[31:0] help
+Xmultig[4] A4_[31:0] B[4] A5_[31:0] S4_[31:0] help
+Xmultig[5] A5_[31:0] B[5] A6_[31:0] S5_[31:0] help
+Xmultig[6] A6_[31:0] B[6] A7_[31:0] S6_[31:0] help
+Xmultig[7] A7_[31:0] B[7] A8_[31:0] S7_[31:0] help
+Xmultig[8] A8_[31:0] B[8] A9_[31:0] S8_[31:0] help
+Xmultig[9] A9_[31:0] B[9] A10_[31:0] S9_[31:0] help
+Xmultig[10] A10_[31:0] B[10] A11_[31:0] S10_[31:0] help
+Xmultig[11] A11_[31:0] B[11] A12_[31:0] S11_[31:0] help
+Xmultig[12] A12_[31:0] B[12] A13_[31:0] S12_[31:0] help
+Xmultig[13] A13_[31:0] B[13] A14_[31:0] S13_[31:0] help
+Xmultig[14] A14_[31:0] B[14] A15_[31:0] S14_[31:0] help
+Xmultig[15] A15_[31:0] B[15] A16_[31:0] S15_[31:0] help
+Xmultig[16] A16_[31:0] B[16] A17_[31:0] S16_[31:0] help
+Xmultig[17] A17_[31:0] B[17] A18_[31:0] S17_[31:0] help
+Xmultig[18] A18_[31:0] B[18] A19_[31:0] S18_[31:0] help
+Xmultig[19] A19_[31:0] B[19] A20_[31:0] S19_[31:0] help
+Xmultig[20] A20_[31:0] B[20] A21_[31:0] S20_[31:0] help
+Xmultig[21] A21_[31:0] B[21] A22_[31:0] S21_[31:0] help
+Xmultig[22] A22_[31:0] B[22] A23_[31:0] S22_[31:0] help
+Xmultig[23] A23_[31:0] B[23] A24_[31:0] S23_[31:0] help
+Xmultig[24] A24_[31:0] B[24] A25_[31:0] S24_[31:0] help
+Xmultig[25] A25_[31:0] B[25] A26_[31:0] S25_[31:0] help
+Xmultig[26] A26_[31:0] B[26] A27_[31:0] S26_[31:0] help
+Xmultig[27] A27_[31:0] B[27] A28_[31:0] S27_[31:0] help
+Xmultig[28] A28_[31:0] B[28] A29_[31:0] S28_[31:0] help
+Xmultig[29] A29_[31:0] B[29] A30_[31:0] S29_[31:0] help
+Xmultig[30] A30_[31:0] B[30] A31_[31:0] S30_[31:0] help
+Xmultig[31] A31_[31:0] B[31] A32_[31:0] S31_[31:0] help
+
+Xmulg[1] 0 0 S0_[31:0] S1_[31:0] R0_[31:0] z1 v1 n1 ARITH
+Xmulg[2] 0 0 S2_[31:0] S3_[31:0] R1_[31:0] z2 v2 n2 ARITH
+Xmulg[3] 0 0 S4_[31:0] S5_[31:0] R2_[31:0] z3 v3 n3 ARITH
+Xmulg[4] 0 0 S6_[31:0] S7_[31:0] R3_[31:0] z4 v4 n4 ARITH
+Xmulg[5] 0 0 S8_[31:0] S9_[31:0] R4_[31:0] z5 v5 n5 ARITH
+Xmulg[6] 0 0 S10_[31:0] S11_[31:0] R5_[31:0] z6 v6 n6 ARITH
+Xmulg[7] 0 0 S12_[31:0] S13_[31:0] R6_[31:0] z7 v7 n7 ARITH
+Xmulg[8] 0 0 S14_[31:0] S15_[31:0] R7_[31:0] z8 v8 n8 ARITH
+Xmulg[9] 0 0 S16_[31:0] S17_[31:0] R8_[31:0] z9 v9 n9 ARITH
+Xmulg[10] 0 0 S18_[31:0] S19_[31:0] R9_[31:0] z10 v10 n10 ARITH
+Xmulg[11] 0 0 S20_[31:0] S21_[31:0] R10_[31:0] z11 v11 n11 ARITH
+Xmulg[12] 0 0 S22_[31:0] S23_[31:0] R11_[31:0] z12 v12 n12 ARITH
+Xmulg[13] 0 0 S24_[31:0] S25_[31:0] R12_[31:0] z13 v13 n13 ARITH
+Xmulg[14] 0 0 S26_[31:0] S27_[31:0] R13_[31:0] z14 v14 n14 ARITH
+Xmulg[15] 0 0 S28_[31:0] S29_[31:0] R14_[31:0] z15 v15 n15 ARITH
+Xmulg[16] 0 0 S30_[31:0] S31_[31:0] R15_[31:0] z16 v16 n16 ARITH
+
+Xmul[17] 0 0 R0_[31:0] R1_[31:0] T0_[31:0] z17 v17 n17 ARITH
+Xmulg[18] 0 0 R2_[31:0] R3_[31:0] T1_[31:0] z18 v18 n18 ARITH
+Xmulg[19] 0 0 R4_[31:0] R5_[31:0] T2_[31:0] z19 v19 n19 ARITH
+Xmulg[20] 0 0 R6_[31:0] R7_[31:0] T3_[31:0] z20 v20 n20 ARITH
+Xmulg[21] 0 0 R8_[31:0] R9_[31:0] T4_[31:0] z21 v21 n21 ARITH
+Xmulg[22] 0 0 R10_[31:0] R11_[31:0] T5_[31:0] z22 v22 n22 ARITH
+Xmulg[23] 0 0 R12_[31:0] R13_[31:0] T6_[31:0] z23 v23 n23 ARITH
+Xmulg[24] 0 0 R14_[31:0] R15_[31:0] T7_[31:0] z24 v24 n24 ARITH
+
+Xmulg[25] 0 0 T0_[31:0] T1_[31:0] U0_[31:0] z25 v25 n25 ARITH
+Xmulg[26] 0 0 T2_[31:0] T3_[31:0] U1_[31:0] z26 v26 n26 ARITH
+Xmulg[27] 0 0 T4_[31:0] T5_[31:0] U2_[31:0] z27 v27 n27 ARITH
+Xmulg[28] 0 0 T6_[31:0] T7_[31:0] U3_[31:0] z28 v28 n28 ARITH
+
+Xmulg[29] 0 0 U0_[31:0] U1_[31:0] W0_[31:0] z29 v29 n29 ARITH
+Xmulg[30] 0 0 U2_[31:0] U3_[31:0] W1_[31:0] z30 v30 n30 ARITH
+
+Xmulg[31] 0 0 W0_[31:0] W1_[31:0] mul[31:0] z31 v31 n31 ARITH
+
+.ends
+
+.subckt alu alufn[4:0] a[31:0] b[31:0] out[31:0] z v n
+*** Generate outputs from each of BOOL, SHIFT, ARITH, CMP subcircuits:
+xbool alufn[3:0] a[31:0] b[31:0] boolout[31:0] BOOL
+xshift alufn[1:0] a[31:0] b[31:0] shiftout[31:0] SHIFT
+xarith alufn[1:0] a[31:0] b[31:0] arithout[31:0] z v n ARITH
+xcmp alufn[3] alufn[1] z v n cmpout[31:0] CMP
+xmult A[31:0] B[31:0] multi[31:0] mult32
+
+*** Combine them, using three multiplexors:
+xmux1 alufn[4]#32 nonbool[31:0] boolout[31:0] out[31:0] mux2
+xmux2 alufn[2]#32 arithshift[31:0] cmpout[31:0] nonbool[31:0] mux2
+xmux3 alufn[3]#32 add_multi[31:0] shiftout[31:0] arithshift[31:0] mux2
+xmult2 alufn[1]#32 arithout[31:0] multi[31:0] add_multi[31:0] mux2
+.ends
+
+*****Additional Circuits
+
+** Full adder code
+.subckt FA A B Ci S Co
+** subcircuit with output S
+Xxor2a A B X xor2
+Xxor2b X Ci S xor2
+** subcircuit with output Co
+Xnand2a A B 1 nand2
+Xnand2b A Ci 2 nand2
+Xnand2c B Ci 3 nand2
+Xnand3d 1 2 3 Co nand3
+.ends
+
+*32-input NOR Gate: input S[31:0]; ouput z
+.subckt 32norTree s[31:0] z //name; input; output;
+Xnor1 s[3:0] a nor4//inp, inp, inp, inp; out; //This is the of NORs tree format; Its slow so use other format
+Xnor2 s[7:4] b nor4
+Xnor3 s[11:8] c nor4 
+Xnor4 s[15:12] d nor4
+Xnor5 s[19:16] e nor4
+Xnor6 s[23:20] f nor4
+Xnor7 s[27:24] g nor4
+Xnor8 s[31:28] h nor4
+Xand1 a b c d x and4 //inp, inp, inp, inp; out;
+Xand2 e f g h y and4
+Xand3 x y z and2 //inp, inpt; out
+.ends
+
+.subckt mux5 s[2:0] a[31:0] b[31:0] c[31:0] d[31:0] e[31:0] ans[31:0]
+//firstMux; four option chosen by first two bits
+XfirstMux s[0]#32 s[1]#32 a[31:0] b[31:0] c[31:0] d[31:0] temp[31:0] mux4
+//secMux; option chosen by last bit being one
+XfifthMux s[2]#32 temp[31:0] e[31:0] ans[31:0] mux2
+.ends
+
+*32 bit adder: inputs AX[31:0] BX[31:0] & ci (carry-in); output S[31:0] co(last carry out)
+.subckt 32adder ax[31:0] bx[31:0] ci s[31:0] co 
+Xfirst  ax[0]    bx[0]    ci           s[0]    c_over[0] FA
+Xmiddle ax[30:1] bx[30:1] c_over[29:0] s[30:1] c_over[30:1] FA
+Xend    ax[31]   bx[31]   c_over[30]   s[31]   co FA
+.ends
+
+******
+
+//******Basic Beta******
+/*
+.subckt beta clk reset ia[31:0] id[31:0] ma[31:0] moe mrd[31:0] wr mwd[31:0]
+//Program counter
+Xpc clk reset ia[31:0] pc
+
+//Regfile
+Xregfile clk werf ra2sel id[20:16] id[15:11] id[25:21] wddata[31:0] radata[31:0] rbdata[31:0] regfile
+
+//Ctrl
+Xctl reset id[31:26] ra2sel bsel alufn[4:0] wdsel[1:0] werf moe wr ctl
+
+//BSEL	   SEL		0	      1		     OUT
+Xbselmux bsel#32 rbdata[31:0] id[15]#16 id[15:0] bout[31:0] mux2
+
+//ALU
+Xalu alufn[4:0] radata[31:0] bout[31:0] aluout[31:0] z v n alu
+
+//WDSEL mux   S0        S1         00      01         10       11     out
+Xwdselmux wdsel[0]#32 wdsel[1]#32 0#32 aluout[31:0] mrd[31:0] 0#32 wddata[31:0] mux4
+
+//connect
+XfirstConnect aluout[31:0] ma[31:0] knex
+XsecondConnect rbdata[31:0] mwd[31:0] knex
+.ends
+
+
+*/
+****BETA**ALL******
+
+.subckt beta clk reset irq ia[31:0] id[31:0] ma[31:0] moe mrd[31:0] wr mwd[31:0]
+//Need each of the basic blocks from before!
+
+//**PC** Note: New inputs & outputs
+//inputs: clk reset ia[31:0] iaRelBr[31:0] pcsel[2:0] illops[31:0] xadr[31:0] jt[31:0] sxtc[31:0] 
+//output: nextia[31:0]
+//  given given   given     made	made	 0x80000004 illops  0x80000008 xadr   jt(RD1)	   made	       made	
+Xpc  clk   reset ia[31:0] iaBr[31:0] pcsel[2:0]   vdd 0#28 vdd 0#2 vdd 0#27 vdd 0#3 radata[31:0] sxtc[31:0] nextia[31:0] pc
+
+//**CTL** 
+//for outputs define temp vars then check em in exception handling
+Xctl reset id[31:26] ra2sel bsel alufn[4:0] xwdsel[1:0] xwerf moe xwr z xpcsel[2:0] asel xwasel ctl
+
+
+//**REGFILE** NOTE: new inputs & outs
+//inputs: clk werf ra2sel ra[4:0] rb[4:0] rc[4:0] wdata[31:0] 
+//outputs: radata[31:0] rbdata[31:0] 
+//	 given  4rm ctl 4rm ctl     ra	  	rb 	rc   output of wdselMux   output RD1 outputRD2
+Xregfl  clk     werf   ra2sel  id[20:16]  id[15:11] wa[4:0]   wdselout[31:0]    radata[31:0]  mwd[31:0] regfile
+//clk werf ra2sel ra[4:0] rb[4:0] rc[4:0] wdata[31:0] radata[31:0] rbdata[31:0]
+
+//Make the Z output logic
+Xznor radata[31:0] z 32norTree
+
+//**Create addition'l muxes
+
+// make ASEL mux
+Xaselmux asel#32 radata[31:0] 0 iaBr[30:0] aselout[31:0] mux2
+
+//make BSEL mux
+.connect sxtc[31:16] id[15] //wires to sign extend
+Xwires sxtc[15:0] id[15:0] knex //wire together
+
+Xbselmux bsel#32 mwd[31:0] sxtc[31:0] bselout[31:0] mux2
+ 
+//make WASEL mux
+//	 5muxesel rc[25:21]  R30 0b11110	out
+Xwaselmux wasel#5 id[25:21] vdd vdd vdd vdd 0 wa[4:0] mux2
+
+//make WDSEL mux 			0	  1	   2	   3	out
+Xwdselmux wdsel[0]#32 wdsel[1]#32 nextia[31:0] ma[31:0] mrd[31:0] 0#32 wdselout[31:0] mux4
+
+//ALU
+Xalu alufn[4:0] aselout[31:0] bselout[31:0] ma[31:0] otherz otherv othern alu
+
+
+//**EXCEPTIONS**
+//Need addition'l logic for the jump, branch & exceptions
+
+//Chck the mode we're in; 
+Xmode ia[31] mode inverter 
+//Chck to see whther we're in superviosr mode; in superviosr if mode =1 && irq=1
+XchckIRQ irq mode supermode and2       
+//If we are in superviosr mode!; change conditions based from ctrl logic table
+//if in supermode, PCSEL = 4; otherwise send xpcsel
+Xdeltapcsel supermode#3 xpcsel[2:0] vdd 0#2 pcsel[2:0] mux2
+//If in supermode, wasel = 1; otherwise send xwasel
+Xdeltawasel supermode xwasel vdd wasel mux2
+//If in supermode, werf = 1; otherwise send xwerf
+Xdeltawerf supermode xwerf vdd werf mux2
+//If in supermode, wadsel = 00; otherwise send xwdsel
+Xdeltawdsel supermode#2 xwdsel[1:0] 0 0 wdsel[1:0] mux2       
+//If in supermode, wr = 0; otherwise send xwr
+xdeltawr supermode xwr 0 wr mux2                              //get new xwr for if we're in IRQ
+.ends
+
+// matches .subckt above w/ IRQ tied to ground 
+Xbeta clk reset 0 ia[31:0] id[31:0] ma[31:0] moe mrd[31:0] wr mwd[31:0] beta 
+ 
+// your memory must also be called Xmem (so the checkoff code can find it!) but 
+// can have a different number of ports. It should however be initialized with 
+// the contents shown below -- the benchmark suite. A file containing these 
+// values can be found at /mit/6.004/jsim/projcheckoff.bin. 
+
+Xmem 
++ vdd 0 0 ia[11:2] id[31:0] 
++ moe 0 0 ma[11:2] mrd[31:0] 
++ 0 clk wr ma[11:2] mwd[31:0] 
++ $memory width=32 nlocations=1024 
++ file="projcheckoff.bin"
+
+// 30ns cycle time, assert RESET for first cycle. Your cycle time may vary
+//Vclk clk 0 pulse(3.3,0,14.99ns,.01ns,.01ns,14.99ns) 
+Vclk clk 0 pulse(3.3,0,9.99ns,.01ns,.01ns,9.99ns)
+//Vclk clk 0 pulse(3.3,0,24.99ns,.01ns,.01ns,24.99ns) 
+Vreset reset 0 pwl(0ns 3.3v, 60ns 3.3v, 60.1ns 0v) 
+ 
+// Run the simulation for 1205 cycles. Your design might require more or less 
+// cycles depending on how it executes instructions. Run only as long as necessary 
+// to complete the benchmark since the ending simulation time is used to compute 
+// your circuits Benmark 
+.tran 24100ns 
+//.tran 36150ns
+//.tran 60250ns
+
+.plot clk
+.plot ia[31:0]
+.plot id[31:0]
+.plot ma[31:0]
+.plot moe
+.plot mrd[31:0]
+.plot wr
+.plot mwd[31:0]
+.plot betaop(id[31:26])
+.plot reg(id[20:16])
+.plot reg(id[15:11])
+.plot reg(id[25:21])

@@ -1,0 +1,221 @@
+*Lab 3: ALU
+
+//.include "nominal.jsim" 
+//.include "stdcell.jsim" 
+//.include "lab3_test_mult.jsim"
+//.include "lab3checkoff_10.jsim" 
+ 
+.subckt BOOL alufn[3:0] A[31:0] B[31:0] OUT[31:0] 
+xbool A[31:0] B[31:0] alufn[0]#32 alufn[1]#32 alufn[2]#32 alufn[3]#32 OUT[31:0] mux4 
+.ends 
+ 
+.subckt ARITH alufn[1:0] A[31:0] B[31:0] OUT[31:0] Z V N 
+//32 bit Xor; inputs B[31:0] & alufn[0]; output XB[31:0]
+X32xor1  B[31:0] alufn[0] bx[31:0] 32xor
+Xadd A[31:0] bx[31:0] alufn[0] addout[31:0] lastS 32adder //changed OUT[31:0] for ARITH
+Xmult A[31:0] B[31:0] mulout[31:0] multiply
+Xsout alufn[1]#32 addout[31:0] mulout[31:0] OUT[31:0] mux2
+//Additional outputs Z;V;N
+//Z output; 
+Xoutz addout[31:0] Z 32nor //changed OUT[31:0] for ARITH
+
+//N output; 1: when S[31]==1; 0: otherwise
+.connect addout[31] N //changed OUT[31:0] for ARITH
+ 
+//V output
+XinvA A[31] notA inverter
+XinvB bx[31] notB inverter
+XinvS OUT[31] notS inverter 
+Xvand1 A[31] bx[31] notS vx and3  
+Xvand2 notA notB addout[31] vy and3
+Xvor vx vy V or2
+.ends 
+
+*************ARITH HELPER CIRCUITS*******************
+*Full Adder: inputs A, B & Ci, output is S, Co; taken from Lab2
+.subckt FA a b ci s co
+//S output; made of XOR Gates
+Xxor1 a b 1 xor2 //name, inp, inp, output, instance
+Xxor2 1 ci s xor2
+//Co output; made of 4 NAND gates
+Xnand21 a b 2 nand2 
+Xnand22 a ci 3 nand2 
+Xnand23 b ci 4 nand2
+Xnand31 2 3 4 co nand3//name, inp, inp, inp, out
+.ends
+
+*32 bit adder: inputs AX[31:0] BX[31:0] & ci (carry-in); output S[31:0] co(last carry out)
+.subckt 32adder ax[31:0] bx[31:0] ci s[31:0] co 
+Xfirst  ax[0]    bx[0]    ci           s[0]    c_over[0] FA
+Xmiddle ax[30:1] bx[30:1] c_over[29:0] s[30:1] c_over[30:1] FA
+Xend    ax[31]   bx[31]   c_over[30]   s[31]   co FA
+.ends
+
+*32-input NOR Gate: input S[31:0]; ouput z
+.subckt 32nor s[31:0] z //name; input; output;
+/*Xnor1 s[3:0] a nor4//inp, inp, inp, inp; out; //This is the of NORs tree format; Its slow so use other format
+Xnor2 s[7:4] b nor4
+Xnor3 s[11:8] c nor4 
+Xnor4 s[15:12] d nor4
+Xnor5 s[19:16] e nor4
+Xnor6 s[23:20] f nor4
+Xnor7 s[27:24] g nor4
+Xnor8 s[31:28] h nor4
+Xand1 a b c d x and4 //inp, inp, inp, inp; out;
+Xand2 e f g h y and4
+Xand3 x y z and2 //inp, inpt; out*/
+
+//THis is the faster form; cascading format
+Xor1 s[1:0] a or2 //Cascading set up instead 
+Xor2 s[2] a b or2
+Xor3 s[3] b c or2
+Xor4 s[4] c d or2
+Xor5 s[5] d e or2
+Xor6 s[6] e f or2
+Xor7 s[7] f g or2
+Xor8 s[8] g h or2
+Xor9 s[9] h i or2
+Xor10 s[10] i j or2
+Xor11 s[11] j k or2
+Xor12 s[12] k l or2
+Xor13 s[13] l m or2
+Xor14 s[14] m n or2
+Xor15 s[15] n o or2
+Xor16 s[16] o p or2
+Xor17 s[17] p q or2
+Xor18 s[18] q r or2
+Xor19 s[19] r s or2
+Xor20 s[20] s t or2
+Xor21 s[21] t u or2
+Xor22 s[22] u v or2
+Xor23 s[23] v w or2
+Xor24 s[24] w x or2
+Xor25 s[25] x y or2
+Xor26 s[26] y aa or2
+Xor27 s[27] aa bb or2
+Xor28 s[28] bb cc or2
+Xor29 s[29] cc dd or2
+Xor30 s[30] dd ee or2
+Xor31 s[31] ee z  nor2
+
+
+
+.ends
+
+*32 bit input XOR: input B[31:0] & alufn; output BX[31:0]
+.subckt 32xor b[31:0] alufn bx[31:0] 
+Xxor b[31:0] alufn#32 bx[31:0] xor2
+.ends
+
+*32 bit multiply
+.subckt multiply ax[31:0] bx[31:0] OUT[31:0]
+Xpartial0  bx[0]#32 ax[31:0] lineouta[31:0] and2
+Xpartial1  bx[1]#32 ax[31:0] lineoutb[31:0] and2
+Xpartial2  bx[2]#32 ax[31:0] lineoutc[31:0] and2
+Xpartial3  bx[3]#32 ax[31:0] lineoutd[31:0] and2
+Xpartial4  bx[4]#32 ax[31:0] lineoute[31:0] and2
+Xpartial5  bx[5]#32 ax[31:0] lineoutf[31:0] and2
+Xpartial6  bx[6]#32 ax[31:0] lineoutg[31:0] and2
+Xpartial7  bx[7]#32 ax[31:0] lineouth[31:0] and2
+Xpartial8  bx[8]#32 ax[31:0] lineouti[31:0] and2
+Xpartial9  bx[9]#32 ax[31:0] lineoutj[31:0] and2
+Xpartial10 bx[10]#32 ax[31:0] lineoutk[31:0] and2
+Xpartial11 bx[11]#32 ax[31:0] lineoutl[31:0] and2
+Xpartial12 bx[12]#32 ax[31:0] lineoutm[31:0] and2
+Xpartial13 bx[13]#32 ax[31:0] lineoutn[31:0] and2
+Xpartial14 bx[14]#32 ax[31:0] lineouto[31:0] and2
+Xpartial15 bx[15]#32 ax[31:0] lineoutp[31:0] and2
+Xpartial16 bx[16]#32 ax[31:0] lineoutq[31:0] and2
+Xpartial17 bx[17]#32 ax[31:0] lineoutr[31:0] and2
+Xpartial18 bx[18]#32 ax[31:0] lineouts[31:0] and2
+Xpartial19 bx[19]#32 ax[31:0] lineoutt[31:0] and2
+Xpartial20 bx[20]#32 ax[31:0] lineoutu[31:0] and2
+Xpartial21 bx[21]#32 ax[31:0] lineoutv[31:0] and2
+Xpartial22 bx[22]#32 ax[31:0] lineoutw[31:0] and2
+Xpartial23 bx[23]#32 ax[31:0] lineoutx[31:0] and2
+Xpartial24 bx[24]#32 ax[31:0] lineouty[31:0] and2
+Xpartial25 bx[25]#32 ax[31:0] lineoutz[31:0] and2
+Xpartial26 bx[26]#32 ax[31:0] lineoutaa[31:0] and2
+Xpartial27 bx[27]#32 ax[31:0] lineoutbb[31:0] and2
+Xpartial28 bx[28]#32 ax[31:0] lineoutcc[31:0] and2
+Xpartial29 bx[29]#32 ax[31:0] lineoutdd[31:0] and2
+Xpartial30 bx[30]#32 ax[31:0] lineoutee[31:0] and2
+Xpartial31 bx[31]#32 ax[31:0] lineoutff[31:0] and2
+
+Xsumup0 lineouta[31:0] lineoutb[30:0] 0  0 suma[31:0]  t0  32adder
+Xsumup1 suma[31:0]   lineoutc[29:0] 0#2  0 sumb[31:0]  t1  32adder
+Xsumup2 sumb[31:0]   lineoutd[28:0] 0#3  0 sumc[31:0]  t2  32adder
+Xsumup3 sumc[31:0]   lineoute[27:0] 0#4  0 sumd[31:0]  t3  32adder
+Xsumup4 sumd[31:0]   lineoutf[26:0] 0#5  0 sume[31:0]  t4  32adder
+Xsumup5 sume[31:0]   lineoutg[25:0] 0#6  0 sumf[31:0]  t5  32adder
+Xsumup6 sumf[31:0]   lineouth[24:0] 0#7  0 sumg[31:0]  t6  32adder
+Xsumup7 sumg[31:0]   lineouti[23:0] 0#8  0 sumh[31:0]  t7  32adder
+Xsumup8 sumh[31:0]   lineoutj[22:0] 0#9  0 sumi[31:0]  t8  32adder
+Xsumup9 sumi[31:0]   lineoutk[21:0] 0#10 0 sumj[31:0]  t9  32adder
+Xsumup10 sumj[31:0]  lineoutl[20:0] 0#11 0 sumk[31:0]  t10 32adder
+Xsumup11 sumk[31:0]  lineoutm[19:0] 0#12 0 suml[31:0]  t11 32adder
+Xsumup12 suml[31:0]  lineoutn[18:0] 0#13 0 summ[31:0]  t12 32adder
+Xsumup13 summ[31:0]  lineouto[17:0] 0#14 0 sumn[31:0]  t13 32adder
+Xsumup14 sumn[31:0]  lineoutp[16:0] 0#15 0 sumo[31:0]  t14 32adder
+Xsumup15 sumo[31:0]  lineoutq[15:0] 0#16 0 sump[31:0]  t15 32adder
+Xsumup16 sump[31:0]  lineoutr[14:0] 0#17 0 sumq[31:0]  t16 32adder
+Xsumup17 sumq[31:0]  lineouts[13:0] 0#18 0 sumr[31:0]  t17 32adder
+Xsumup18 sumr[31:0]  lineoutt[12:0] 0#19 0 sums[31:0]  t18 32adder
+Xsumup19 sums[31:0]  lineoutu[11:0] 0#20 0 sumt[31:0]  t19 32adder
+Xsumup20 sumt[31:0]  lineoutv[10:0] 0#21 0 sumu[31:0]  t20 32adder
+Xsumup21 sumu[31:0]  lineoutw[9:0]  0#22 0 sumv[31:0]  t21 32adder
+Xsumup22 sumv[31:0]  lineoutx[8:0]  0#23 0 sumw[31:0]  t22 32adder
+Xsumup23 sumw[31:0]  lineouty[7:0]  0#24 0 sumx[31:0]  t23 32adder
+Xsumup24 sumx[31:0]  lineoutz[6:0]  0#25 0 sumy[31:0]  t24 32adder
+Xsumup25 sumy[31:0]  lineoutaa[5:0] 0#26 0 sumz[31:0]  t25 32adder
+Xsumup26 sumz[31:0]  lineoutbb[4:0] 0#27 0 sumaa[31:0] t26 32adder
+Xsumup27 sumaa[31:0] lineoutcc[3:0] 0#28 0 sumbb[31:0] t27 32adder
+Xsumup28 sumbb[31:0] lineoutdd[2:0] 0#29 0 sumcc[31:0] t28 32adder
+Xsumup29 sumcc[31:0] lineoutee[1:0] 0#30 0 sumdd[31:0] t29 32adder
+Xsumup30 sumdd[31:0] lineoutff[0]   0#31 0 OUT[31:0]   t30 32adder
+.ends
+
+
+***********************************
+.subckt SHIFT alufn[1:0] A[31:0] B[31:0] OUT[31:0] 
+XSHL A[31:0] B[4:0] 0 x[31:0] leftshft
+Xand1 A[31] alufn[1] outand and2
+Xnew A[0:31] B[4:0] outand y[0:31] leftshft
+
+*XSHR A[0:31] B[4:0] 0 y[0:31] leftshft
+*XSRA A[0:31] B[4:0] A[31] z[0:31] leftshft
+
+Xmux alufn[0]#32 x[31:0] y[31:0] OUT[31:0] mux2 
+.ends  
+ 
+************************HELPER FUNCTION
+.subckt leftshft a[31:0] b[4:0] filler shft[31:0] //inpt, inpt, inpt; output 
+Xmux5 b[4]#32 a[31:0] a[15:0] filler#16 W[31:0] mux2
+Xmux4 b[3]#32 W[31:0] W[23:0] filler#8  X[31:0] mux2
+Xmux3 b[2]#32 X[31:0] X[27:0] filler#4  Y[31:0] mux2 
+Xmux2 b[1]#32 Y[31:0] Y[29:0] filler#2  Z[31:0] mux2
+Xmux1 b[0]#32 Z[31:0] Z[30:0] filler  shft[31:0] mux2
+.ends
+
+***********************************
+.subckt CMP alufn3 alufn1 Z V N OUT[31:0] 
+Xxor N V a xor2
+Xoor Z a b or2
+Xmux alufn3 alufn1 Z b a 0 OUT[0] mux4 //s0 s1 d0 d1 d2 d3 z mux4
+.connect 0 OUT[31:1]
+.ends 
+ 
+.subckt alu alufn[4:0] a[31:0] b[31:0] out[31:0] z v n 
+ 
+*** Generate outputs from each of BOOL, SHIFT, ARITH, CMP subcircuits: 
+xbool alufn[3:0] a[31:0] b[31:0] boolout[31:0] BOOL 
+xshift alufn[1:0] a[31:0] b[31:0] shiftout[31:0] SHIFT 
+xarith alufn[1:0] a[31:0] b[31:0] arithout[31:0] z v n ARITH 
+xcmp alufn[3] alufn[1] z v n cmpout[31:0] CMP 
+ 
+*** Combine them, using three multiplexors: 
+xmux1 alufn[4]#32 nonbool[31:0] boolout[31:0] out[31:0] mux2 
+xmux2 alufn[2]#32 arithshift[31:0] cmpout[31:0] nonbool[31:0] mux2 
+xmux3 alufn[3]#32 arithout[31:0] shiftout[31:0] arithshift[31:0] mux2 
+ 
+.ends
