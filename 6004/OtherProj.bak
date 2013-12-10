@@ -242,93 +242,19 @@ Xhelperg2 A[30:0] 0 shifteda[31:0] knex
 .connect a b
 .ends
 
-.subckt mult32 A[31:0] B[31:0] mul[31:0]
-********* first multiply all of AI's with all of BI shifting by 1 each time
-
-Xmultig[0] A[31:0] B[0] A1_[31:0] S0_[31:0] help
-Xmultig[1] A1_[31:0] B[1] A2_[31:0] S1_[31:0] help
-Xmultig[2] A2_[31:0] B[2] A3_[31:0] S2_[31:0] help
-Xmultig[3] A3_[31:0] B[3] A4_[31:0] S3_[31:0] help
-Xmultig[4] A4_[31:0] B[4] A5_[31:0] S4_[31:0] help
-Xmultig[5] A5_[31:0] B[5] A6_[31:0] S5_[31:0] help
-Xmultig[6] A6_[31:0] B[6] A7_[31:0] S6_[31:0] help
-Xmultig[7] A7_[31:0] B[7] A8_[31:0] S7_[31:0] help
-Xmultig[8] A8_[31:0] B[8] A9_[31:0] S8_[31:0] help
-Xmultig[9] A9_[31:0] B[9] A10_[31:0] S9_[31:0] help
-Xmultig[10] A10_[31:0] B[10] A11_[31:0] S10_[31:0] help
-Xmultig[11] A11_[31:0] B[11] A12_[31:0] S11_[31:0] help
-Xmultig[12] A12_[31:0] B[12] A13_[31:0] S12_[31:0] help
-Xmultig[13] A13_[31:0] B[13] A14_[31:0] S13_[31:0] help
-Xmultig[14] A14_[31:0] B[14] A15_[31:0] S14_[31:0] help
-Xmultig[15] A15_[31:0] B[15] A16_[31:0] S15_[31:0] help
-Xmultig[16] A16_[31:0] B[16] A17_[31:0] S16_[31:0] help
-Xmultig[17] A17_[31:0] B[17] A18_[31:0] S17_[31:0] help
-Xmultig[18] A18_[31:0] B[18] A19_[31:0] S18_[31:0] help
-Xmultig[19] A19_[31:0] B[19] A20_[31:0] S19_[31:0] help
-Xmultig[20] A20_[31:0] B[20] A21_[31:0] S20_[31:0] help
-Xmultig[21] A21_[31:0] B[21] A22_[31:0] S21_[31:0] help
-Xmultig[22] A22_[31:0] B[22] A23_[31:0] S22_[31:0] help
-Xmultig[23] A23_[31:0] B[23] A24_[31:0] S23_[31:0] help
-Xmultig[24] A24_[31:0] B[24] A25_[31:0] S24_[31:0] help
-Xmultig[25] A25_[31:0] B[25] A26_[31:0] S25_[31:0] help
-Xmultig[26] A26_[31:0] B[26] A27_[31:0] S26_[31:0] help
-Xmultig[27] A27_[31:0] B[27] A28_[31:0] S27_[31:0] help
-Xmultig[28] A28_[31:0] B[28] A29_[31:0] S28_[31:0] help
-Xmultig[29] A29_[31:0] B[29] A30_[31:0] S29_[31:0] help
-Xmultig[30] A30_[31:0] B[30] A31_[31:0] S30_[31:0] help
-Xmultig[31] A31_[31:0] B[31] A32_[31:0] S31_[31:0] help
-
-Xmulg[1] 0 0 S0_[31:0] S1_[31:0] R0_[31:0] z1 v1 n1 ARITH
-Xmulg[2] 0 0 S2_[31:0] S3_[31:0] R1_[31:0] z2 v2 n2 ARITH
-Xmulg[3] 0 0 S4_[31:0] S5_[31:0] R2_[31:0] z3 v3 n3 ARITH
-Xmulg[4] 0 0 S6_[31:0] S7_[31:0] R3_[31:0] z4 v4 n4 ARITH
-Xmulg[5] 0 0 S8_[31:0] S9_[31:0] R4_[31:0] z5 v5 n5 ARITH
-Xmulg[6] 0 0 S10_[31:0] S11_[31:0] R5_[31:0] z6 v6 n6 ARITH
-Xmulg[7] 0 0 S12_[31:0] S13_[31:0] R6_[31:0] z7 v7 n7 ARITH
-Xmulg[8] 0 0 S14_[31:0] S15_[31:0] R7_[31:0] z8 v8 n8 ARITH
-Xmulg[9] 0 0 S16_[31:0] S17_[31:0] R8_[31:0] z9 v9 n9 ARITH
-Xmulg[10] 0 0 S18_[31:0] S19_[31:0] R9_[31:0] z10 v10 n10 ARITH
-Xmulg[11] 0 0 S20_[31:0] S21_[31:0] R10_[31:0] z11 v11 n11 ARITH
-Xmulg[12] 0 0 S22_[31:0] S23_[31:0] R11_[31:0] z12 v12 n12 ARITH
-Xmulg[13] 0 0 S24_[31:0] S25_[31:0] R12_[31:0] z13 v13 n13 ARITH
-Xmulg[14] 0 0 S26_[31:0] S27_[31:0] R13_[31:0] z14 v14 n14 ARITH
-Xmulg[15] 0 0 S28_[31:0] S29_[31:0] R14_[31:0] z15 v15 n15 ARITH
-Xmulg[16] 0 0 S30_[31:0] S31_[31:0] R15_[31:0] z16 v16 n16 ARITH
-
-Xmul[17] 0 0 R0_[31:0] R1_[31:0] T0_[31:0] z17 v17 n17 ARITH
-Xmulg[18] 0 0 R2_[31:0] R3_[31:0] T1_[31:0] z18 v18 n18 ARITH
-Xmulg[19] 0 0 R4_[31:0] R5_[31:0] T2_[31:0] z19 v19 n19 ARITH
-Xmulg[20] 0 0 R6_[31:0] R7_[31:0] T3_[31:0] z20 v20 n20 ARITH
-Xmulg[21] 0 0 R8_[31:0] R9_[31:0] T4_[31:0] z21 v21 n21 ARITH
-Xmulg[22] 0 0 R10_[31:0] R11_[31:0] T5_[31:0] z22 v22 n22 ARITH
-Xmulg[23] 0 0 R12_[31:0] R13_[31:0] T6_[31:0] z23 v23 n23 ARITH
-Xmulg[24] 0 0 R14_[31:0] R15_[31:0] T7_[31:0] z24 v24 n24 ARITH
-
-Xmulg[25] 0 0 T0_[31:0] T1_[31:0] U0_[31:0] z25 v25 n25 ARITH
-Xmulg[26] 0 0 T2_[31:0] T3_[31:0] U1_[31:0] z26 v26 n26 ARITH
-Xmulg[27] 0 0 T4_[31:0] T5_[31:0] U2_[31:0] z27 v27 n27 ARITH
-Xmulg[28] 0 0 T6_[31:0] T7_[31:0] U3_[31:0] z28 v28 n28 ARITH
-
-Xmulg[29] 0 0 U0_[31:0] U1_[31:0] W0_[31:0] z29 v29 n29 ARITH
-Xmulg[30] 0 0 U2_[31:0] U3_[31:0] W1_[31:0] z30 v30 n30 ARITH
-
-Xmulg[31] 0 0 W0_[31:0] W1_[31:0] mul[31:0] z31 v31 n31 ARITH
-
-.ends
-
 .subckt alu alufn[4:0] a[31:0] b[31:0] out[31:0] z v n
 *** Generate outputs from each of BOOL, SHIFT, ARITH, CMP subcircuits:
 xbool alufn[3:0] a[31:0] b[31:0] boolout[31:0] BOOL
 xshift alufn[1:0] a[31:0] b[31:0] shiftout[31:0] SHIFT
 xarith alufn[1:0] a[31:0] b[31:0] arithout[31:0] z v n ARITH
 xcmp alufn[3] alufn[1] z v n cmpout[31:0] CMP
-xmult A[31:0] B[31:0] multi[31:0] mult32
+//xmult A[31:0] B[31:0] multi[31:0] mult32
 
 *** Combine them, using three multiplexors:
 xmux1 alufn[4]#32 nonbool[31:0] boolout[31:0] out[31:0] mux2
 xmux2 alufn[2]#32 arithshift[31:0] cmpout[31:0] nonbool[31:0] mux2
 xmux3 alufn[3]#32 add_multi[31:0] shiftout[31:0] arithshift[31:0] mux2
-xmult2 alufn[1]#32 arithout[31:0] multi[31:0] add_multi[31:0] mux2
+xmult2 alufn[1]#32 arithout[31:0] 0#32 add_multi[31:0] mux2
 .ends
 
 *****Additional Circuits
@@ -491,7 +417,7 @@ Xmem
 //Vclk clk 0 pulse(3.3,0,14.99ns,.01ns,.01ns,14.99ns) 
 Vclk clk 0 pulse(3.3,0,9.99ns,.01ns,.01ns,9.99ns)
 //Vclk clk 0 pulse(3.3,0,24.99ns,.01ns,.01ns,24.99ns) 
-Vreset reset 0 pwl(0ns 3.3v, 60ns 3.3v, 60.1ns 0v) 
+Vreset reset 0 pwl(0ns 3.3v, 30ns 3.3v, 30.1ns 0v) 
  
 // Run the simulation for 1205 cycles. Your design might require more or less 
 // cycles depending on how it executes instructions. Run only as long as necessary 
